@@ -1,0 +1,74 @@
+﻿@model List<Transferencia>
+@{
+    ViewData["Title"] = "Transferências";
+}
+
+<!-- Banner -->
+@section Banner {
+    <div class="alert alert-warning text-center">
+        Saiba de todas as transferências do mercado da bola!
+    </div>
+}
+<h1>Lista de Transferêncais</h1>
+
+<mensagem mensagem="@TempData["msg"]"></mensagem>
+
+<a asp-action="cadastrar" class="btn btn-sm btn-outline-dark">Cadastrar</a>
+<a asp-action="pesquisar" class="btn btn-sm btn-outline-dark">Pesquisar</a>
+
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Valor</th>
+        <th>Posição</th>
+        <th>Data da Venda</th>
+        <th>Definitivo</th>
+    </tr>
+
+    <!-- Conteúdo da tabela -->
+    @foreach(var jogador in Model)
+    {
+        <tr>
+            <td>@jogador.Nome</td>
+            <td>@jogador.Valor</td>
+            <td>@jogador.Origem</td>
+            <td>@jogador.Destino</td>
+            <td>@jogador.Posicao</td>
+            <td>@jogador.DataVenda</td>
+            <td>@(jogador.Definitivo?"Sim":"Não")</td>
+            <td>
+                <a asp-action="Editar" asp-route-id="@jogador.Codigo"
+               class="btn btn-sm btn-outline-dark">Editar</a>
+                <!-- Button trigger modal -->
+                <button onclick="jogadorId.value = @jogador.Codigo" type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Remover
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Deseja realmente remover a transferência?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="Remover">
+                    <input name="transferencia" type="hidden" id="transferenciaId" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-danger">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

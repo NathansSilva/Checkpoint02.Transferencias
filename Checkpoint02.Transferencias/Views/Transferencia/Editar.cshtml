@@ -1,0 +1,17 @@
+﻿@model Transferencia
+
+@{
+    ViewData["title"] = "Editar Transferência";
+}
+
+<h1>Atualização de Transferência</h1>
+
+<mensagem mensagem="@TempData["cadastro"]"></mensagem>
+
+<form asp-action="Editar">
+
+    <partial name="_Form" />
+
+    <botao class="btn btn-primary" texto="Editar"></botao>
+    <a asp-action="index" class="btn btn-outline-dark">Lista de Transferências</a>
+</form>

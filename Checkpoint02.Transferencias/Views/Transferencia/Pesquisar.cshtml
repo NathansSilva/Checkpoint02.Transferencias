@@ -1,0 +1,41 @@
+﻿@model Transferencia
+
+<div class="container d-flex flex-column align-items-center justify-content-center">
+
+    <h1>Pesquisar transferência</h1>
+
+    <form asp-action="pesquisar" asp-controller="transferencia">
+
+        <partial name="_FormPesquisar" />
+
+        <input type="submit" value="Pesquisar" class="btn text-light btn-success" />
+        <a asp-action="index" class="btn btn-outline-dark">Lista de transferencia</a>
+    </form>
+
+    <table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Valor</th>
+        <th>Posição</th>
+        <th>Data da Venda</th>
+        <th>Definitivo</th>
+    </tr>
+
+        @if (Model != null)
+        {
+            <tr>
+                <td>@Model.Nome</td>
+                <td>@Model.Idade</td>
+                <td>@Model.Valor</td>
+                <td>@Model.Origem</td>
+                <td>@Model.Destino</td>
+                <td>@Model.Posicao</td>
+                <td>@Model.DataVenda</td>
+                <td>@Model.Definitivo</td>
+            </tr>
+        }
+    </table>
+</div>

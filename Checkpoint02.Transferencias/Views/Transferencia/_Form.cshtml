@@ -1,0 +1,38 @@
+﻿@model Transferencia
+
+<input asp-for="Codigo" />
+<div class="mb-3">
+    <label asp-for="Nome"></label>
+    <input asp-for="Nome" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Idade"></label>
+    <input asp-for="Idade" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Origem"></label>
+    <input asp-for="Origem" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Destino"></label>
+    <input asp-for="Destino" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Valor"></label>
+    <input asp-for="Valor" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Posicao">Posição</label>
+    <select class="form-select" asp-for="Posicao"
+            asp-items="@Html.GetEnumSelectList<Posicao>()">
+        <option>Selecione</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label asp-for="DataVenda">Data da venda</label>
+    <input asp-for="DataVenda" class="form-control" />
+</div>
+<div class="mb-3">
+    <input asp-for="Definitivo" />
+    <label asp-for="Definitivo"></label>
+</div>
